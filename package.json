@@ -1,0 +1,30 @@
+{
+  "name": "fpomg",
+  "version": "0.0.0",
+  "description": "Custom FPO image API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewrubin/fpomg.git"
+  },
+  "keywords": [
+    "fpo",
+    "image",
+    "placeholder"
+  ],
+  "author": "Andrew Rubin <andrew@wethecollective.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/andrewrubin/fpomg/issues"
+  },
+  "homepage": "https://github.com/andrewrubin/fpomg#readme",
+  "dependencies": {
+    "canvas": "~2.8.0",
+    "express": "~4.17.1",
+    "nodemon": "~2.0.14"
+  }
+}
