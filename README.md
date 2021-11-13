@@ -1,5 +1,8 @@
 # fpomg
-Custom FPO image API written in Node
+### A node-based, custom FPO image API
+
+![image](https://user-images.githubusercontent.com/30575213/141658278-094247e0-b512-415b-a85d-472f9738fb22.png)
+
 
 Navigate to, or set your image source to:
 ```
