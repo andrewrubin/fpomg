@@ -2,7 +2,7 @@ const express = require("express");
 const createImage = require("./lib/create-image.js");
 
 const isProd = process.env.NODE_ENV === "production" ? true : false;
-const port = isProd ? process.env.PORT : 8000;
+const port = process.env.PORT;
 const app = express();
 
 app.get("/:width?/:height?/:color?", async (req, res) => {
