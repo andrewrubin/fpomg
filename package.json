@@ -4,7 +4,7 @@
   "description": "Custom FPO image API",
   "main": "index.js",
   "engines": {
-    "node": ">=16"
+    "node": "13.3.0"
   },
   "scripts": {
     "start": "node index.js",
