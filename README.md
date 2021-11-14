@@ -1,11 +1,11 @@
 # fpomg
 
-### A node-based, custom FPO image API
+### The URL-based custom FPO image API 
+Custom colors to match your designs, and custom text to suit your needs:
 
-![image](https://user-images.githubusercontent.com/30575213/141667324-6a15bfc5-6771-429b-830e-2bd9bd44eb8b.png)
+![fpomg-examples-v2](https://user-images.githubusercontent.com/30575213/141697854-0edb458f-954b-4554-b683-e3fc675bc70f.png)
 
-
-
+## Usage
 Navigate to, or set your image source to:
 
 ```
@@ -32,7 +32,9 @@ Use custom text by passing a `?text` variable to the URL. Defaults to `FPO`.
 https://fpomg.com/600/400/b4d455/?text=coming soon
 ```
 
-## Development Requirements:
+## Contributing:
+
+There are a couple of development requirements below. Please feel free to open a pull request or an issue if you have feature requests or find any bugs!
 
 - [Node v13.3.0](https://nodejs.org/en/download/releases/) (required for Heroku to play nice with `node-canvas`: see the [GitHub issue](https://github.com/Automattic/node-canvas/issues/1563))
 - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
