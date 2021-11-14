@@ -34,5 +34,5 @@ https://fpomg.com/600/400/b4d455/?text=coming soon
 
 ## Development Requirements:
 
-- [Node v16](https://nodejs.org)
+- [Node v13.3.0](https://nodejs.org/en/download/releases/) (required for Heroku to play nice with `node-canvas`: see the [GitHub issue](https://github.com/Automattic/node-canvas/issues/1563))
 - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
