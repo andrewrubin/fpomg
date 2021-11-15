@@ -1,14 +1,16 @@
 {
   "name": "fpomg",
   "version": "0.0.0",
-  "description": "Custom FPO image API",
+  "description": "URL-based custom FPO image API",
   "main": "index.js",
   "engines": {
     "node": "13.3.0"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "heroku local"
+    "dev": "heroku local",
+    "dev:frontend": "parcel watch frontend/index.pug",
+    "heroku-postbuild": "parcel build frontend/index.pug"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,7 @@
     "image",
     "placeholder"
   ],
-  "author": "Andrew Rubin <andrew@wethecollective.com>",
+  "author": "Andrew Rubin <arubin78@gmail.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/andrewrubin/fpomg/issues"
@@ -27,7 +29,11 @@
   "homepage": "https://github.com/andrewrubin/fpomg#readme",
   "dependencies": {
     "canvas": "~2.8.0",
-    "express": "~4.17.1",
-    "nodemon": "~2.0.14"
+    "express": "~4.17.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "~1.12.5",
+    "pug": "~3.0.2",
+    "sass": "~1.43.4"
   }
 }
