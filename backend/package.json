@@ -8,9 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "heroku local",
-    "dev:frontend": "parcel watch frontend/index.pug",
-    "heroku-postbuild": "parcel build frontend/index.pug"
+    "dev": "heroku local"
   },
   "repository": {
     "type": "git",
@@ -30,10 +28,5 @@
   "dependencies": {
     "canvas": "~2.8.0",
     "express": "~4.17.1"
-  },
-  "devDependencies": {
-    "parcel-bundler": "~1.12.5",
-    "pug": "~3.0.2",
-    "sass": "~1.43.4"
   }
 }
