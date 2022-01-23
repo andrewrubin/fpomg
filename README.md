@@ -40,7 +40,6 @@ Please feel free to open a pull request or an issue if you have feature requests
 For working on the Express app that handles all the image generation, you'll need the following: 
 
 - [Node.js v13.3.0](https://nodejs.org/en/download/releases/) (required for Heroku to play nice with `node-canvas`: see the [GitHub issue](https://github.com/Automattic/node-canvas/issues/1563))
-- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
 ### Front end
 For updates to the user-facing landing page, you'll need:
