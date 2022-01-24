@@ -1,0 +1,16 @@
+:root {
+  --color-dark-100: #3c3c47;
+  --color-dark-200: #2e2e33;
+  --color-dark-300: #252528;
+  --color-dark-400: #161619;
+  --color-dark-500: #1a1a1a;
+
+  --color-light-100: #e8e8e8;
+  --color-light-200: #dbdbdb;
+  --color-light-300: #a0a0a0;
+
+  --color-text-light: var(--color-light-200);
+  --color-text-dark: var(--color-dark-500);
+
+  --color-highlight: #ff00b4;
+}

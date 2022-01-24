@@ -1,0 +1,64 @@
+@use "./helpers";
+@use "./breakpoints" as breaks;
+
+:root {
+  --font-body: 'Open Sans', sans-serif;
+  --font-mono: 'PT Mono', monospace;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  font-size: 100%;
+}
+
+body {
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+pre, 
+code {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-regular);
+}
+
+p,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1;
+}
+
+.txt-body {
+  font-size: 1rem;
+}
+
+.txt-body-larger {
+  font-size: 1.1rem;
+}
+
+.txt-body-jumbo {
+  font-size: 1.3rem;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+@media #{breaks.$medium-up} {
+  .txt-body-larger {
+    font-size: 1.375rem;
+  }
+  
+  .txt-body-jumbo {
+    font-size: 1.75rem;
+  }
+}
