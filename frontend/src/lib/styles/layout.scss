@@ -52,6 +52,10 @@ $num-columns: 12;
 }
 
 @media #{breaks.$large-up} {
+  :root {
+    --gutter: 38px;
+  }
+
   @for $i from 1 through $num-columns {
     .col--lrg-#{$i} {
       flex-basis: math.div($i, $num-columns) * 100%;

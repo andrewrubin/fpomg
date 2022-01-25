@@ -41,6 +41,10 @@ h6 {
   font-size: 1rem;
 }
 
+.txt-body-smaller {
+  font-size: .8rem;
+}
+
 .txt-body-larger {
   font-size: 1.1rem;
 }
@@ -60,5 +64,17 @@ h6 {
   
   .txt-body-jumbo {
     font-size: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px)  {
+  .txt-body-smaller {
+    font-size: 0.9rem;  
+  }
+}
+
+@media #{breaks.$large-up} {
+  .txt-body-smaller {
+    font-size: 1rem;  
   }
 }
