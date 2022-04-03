@@ -1,19 +1,18 @@
-
 <script>
-	import { afterNavigate } from "$app/navigation"
+	import { afterNavigate } from '$app/navigation';
 
 	afterNavigate(() => {
 		PayPal.Donation.Button({
-			env: "production",
-			hosted_button_id: "ECMDZR6C7KKYW",
+			env: 'production',
+			hosted_button_id: 'ECMDZR6C7KKYW',
 			image: {
 				// this is a 1x1 transparent png, because paypal
 				// requires there to be an image in the donate button:
-				src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
-				alt: "",
+				src: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
+				alt: '',
 			},
-		}).render("#donate-button");
-	})
+		}).render('#donate-button');
+	});
 </script>
 
 <footer class="footer">
@@ -32,7 +31,11 @@
 		position: absolute;
 		width: 100%;
 	}
-	
+
+	@mixin highlight {
+		color: var(--color-highlight);
+	}
+
 	.footer {
 		background-color: var(--color-dark-200);
 		display: flex;
@@ -41,7 +44,18 @@
 	}
 
 	.footer__donate {
+		line-height: 1;
+		padding: 16px 40px;
 		position: relative;
-	}
 
+		@media (hover: hover) {
+			&:hover {
+				@include highlight;
+			}
+		}
+
+		&:active {
+			@include highlight;
+		}
+	}
 </style>
