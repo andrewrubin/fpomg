@@ -1,4 +1,4 @@
-![fpomg-logo](./frontend/static/logo-fpomg.svg)
+<img src="./logo-fpomg.png" alt="FPOMG logo" width="420" />
 
 ### fpomg: the URL-based custom FPO image API
 
