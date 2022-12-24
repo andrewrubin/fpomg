@@ -1,5 +1,6 @@
 ## Requirements
-- Node v16.7.0
+
+- Node v16
 
 ## Development
 
