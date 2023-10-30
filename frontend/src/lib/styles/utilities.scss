@@ -1,26 +1,28 @@
-.content-flow {
-  --vertical-space: #{space-by(2)};
+@use '../styles/helpers' as *;
 
-  > * + * {
-    margin-top: var(--vertical-space);
-  }
+.content-flow {
+	--vertical-space: #{space-by(2)};
+
+	> * + * {
+		margin-top: var(--vertical-space);
+	}
 }
 
 .visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 .block {
-  display: block;
+	display: block;
 }
 
 .fit {
-  width: 100%;
+	width: 100%;
 }

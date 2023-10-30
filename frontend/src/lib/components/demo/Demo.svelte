@@ -24,7 +24,7 @@
 <section class="demo">
 	<div class="row">
 		<div class="col col--6 col--lrg-5">
-			<div class="playground">
+			<div class="playground content-flow">
 				<label for="tryit">
 					<span class="block txt-body-jumbo">try it:</span>
 				</label>
@@ -35,7 +35,7 @@
 					bind:value={inputValue}
 					on:input={handleInput}
 				/>
-				<CopyButton text={imageSource} disabled={imageError} />
+				<CopyButton text={imageSource} disabled={imageError} color="#ff00b4" />
 			</div>
 		</div>
 		<div class="col col--6 col--lrg-5">
@@ -50,12 +50,28 @@
 
 <style lang="scss">
 	@use '../../styles/helpers' as *;
+	@use "../../styles/breakpoints" as *;
 
 	.demo {
 		--corners: 16px;
 
 		background-color: var(--color-dark-400);
-		padding: 140px 0 125px;
+		padding: var(--gutter) 0;
+
+		@media #{$medium-up} {
+			padding: 140px 0 125px;
+		}
+	}
+
+	.row {
+		> * + * {
+			margin-top: var(--gutter);
+			
+			@media #{$medium-up} {
+				margin-top: 0;
+			}
+		}
+
 	}
 
 	.playground {
