@@ -44,6 +44,8 @@ https://fpomg.com/600/400/b4d455/?text=this is ${width} wide
 
 Please feel free to open a pull request or an issue.
 
-### Back end
+## TO-DO
 
-For working on the Express app that handles all the image generation, you'll need to use Node.js v13.3.0](https://nodejs.org/en/download/releases/). This is required for Heroku to play nice with `node-canvas` (see the [GitHub issue](https://github.com/Automattic/node-canvas/issues/1563)).
+- Build front-end app as initial step to Heroku deployment
+- Update Express app to serve front-end app at root
+- Solve issue with Node canvas dependencies on Cairo, which doesn't run on any maintained Heroku stacks.
