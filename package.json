@@ -6,6 +6,9 @@
     "apps/backend",
     "apps/frontend"
   ],
+  "engines": {
+    "node": "18.x"
+  },
   "private": true,
   "main": "index.js",
   "scripts": {
