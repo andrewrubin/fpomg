@@ -1,0 +1,24 @@
+{
+  "name": "fpomg",
+  "version": "0.0.0",
+  "description": "FPOMG: the URL-based custom FPO image API",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewrubin/fpomg.git"
+  },
+  "author": "Andrew Rubin <arubin78@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewrubin/fpomg/issues"
+  },
+  "homepage": "https://github.com/andrewrubin/fpomg#readme"
+}
