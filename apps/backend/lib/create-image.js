@@ -32,7 +32,7 @@ const createImage = async ({
   let parsedText = text;
   const vars = { w, h };
   VARIABLES.forEach(([value, replacer]) => {
-    parsedText = parsedText.replace(value, vars[replacer]);
+    parsedText = parsedText.replaceAll(value, vars[replacer]);
   });
 
   ctx.fillStyle = `#${color}`;

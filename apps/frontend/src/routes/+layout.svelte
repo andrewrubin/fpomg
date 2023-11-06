@@ -3,6 +3,6 @@
 	import '../app.scss';
 </script>
 
-<slot></slot>
+<slot />
 
 <Footer />
