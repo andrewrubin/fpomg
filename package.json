@@ -3,18 +3,18 @@
   "version": "0.0.0",
   "description": "FPOMG: the URL-based custom FPO image API",
   "workspaces": [
-    "apps/backend",
+    "apps/worker",
     "apps/frontend"
   ],
   "engines": {
-    "node": "18.x"
+    "node": ">=22"
   },
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "npm start -w=apps/backend",
     "build": "npm run build -w=apps/frontend",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run build && npm run dev -w=apps/worker",
+    "deploy": "npm run build && npm run deploy -w=apps/worker",
+    "test": "npm run build && npm test -w=apps/worker"
   },
   "repository": {
     "type": "git",

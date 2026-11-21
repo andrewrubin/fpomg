@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "fpomg",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  // Static assets (the prerendered SvelteKit site) are matched first by default.
+  // With not_found_handling set, the asset layer answers *browser navigations*
+  // that match no file with 404.html without running the Worker, so image URLs
+  // typed into the address bar would 404. run_worker_first sends every
+  // multi-segment path (all image URLs: /600/400, /600/400/b4d455) to the Worker
+  // first, except /_app/*, the only nested folder in the build.
+  "assets": {
+    "directory": "../frontend/build",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/*/*", "!/_app/*"]
+  },
+  "rules": [
+    { "type": "CompiledWasm", "globs": ["**/*.wasm"], "fallthrough": true },
+    { "type": "Data", "globs": ["**/*.ttf"], "fallthrough": true }
+  ]
+}
