@@ -12,7 +12,7 @@ Navigate to, or set your image source to:
 https://fpomg.com/600/400
 ```
 
-The two numbers in the URL correspond to the width and the height of the image.
+The two numbers in the URL correspond to the width and the height of the image, in pixels (1 to 2000).
 
 ## Color
 
@@ -32,6 +32,8 @@ Use custom text by passing a `?text` variable to the URL. Defaults to the width 
 https://fpomg.com/600/400/b4d455/?text=coming soon
 ```
 
+Text can be up to 200 characters. Long text wraps onto multiple centered lines, and shrinks if needed to fit inside the image with some padding.
+
 ### Text variables
 
 If your text parameter contains the strings `${width}` or `${height}`, they will be replaced with the width and height of the image:
@@ -40,12 +42,19 @@ If your text parameter contains the strings `${width}` or `${height}`, they will
 https://fpomg.com/600/400/b4d455/?text=this is ${width} wide
 ```
 
+## Development
+
+FPOMG runs on [Cloudflare Workers](https://developers.cloudflare.com/workers/). The Worker (`apps/worker`) renders images and also serves the SvelteKit site (`apps/frontend`) as static assets. Requires Node 22+.
+
+```sh
+npm install      # use npm 11+ (`npx npm@11 install`); npm 10 crashes resolving Vitest's peer deps
+npm run dev      # build the site, then run the Worker locally at http://localhost:8787
+npm test         # run the Worker tests inside the Workers runtime
+npm run deploy   # build the site and deploy to Cloudflare (run `npx wrangler login` first)
+```
+
+Text is set in [Montserrat](https://github.com/JulietaUla/Montserrat) Bold, bundled under the SIL Open Font License (`apps/worker/src/fonts/OFL.txt`).
+
 ## Contributing:
 
 Please feel free to open a pull request or an issue.
-
-## TO-DO
-
-- Build front-end app as initial step to Heroku deployment
-- Update Express app to serve front-end app at root
-- Solve issue with Node canvas dependencies on Cairo, which doesn't run on any maintained Heroku stacks.

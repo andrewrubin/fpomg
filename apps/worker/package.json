@@ -1,13 +1,13 @@
 {
-  "name": "fpomg",
+  "name": "fpomg-worker",
   "version": "0.0.0",
   "description": "URL-based custom FPO image API",
-  "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,12 @@
   ],
   "author": "Andrew Rubin <arubin78@gmail.com>",
   "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/andrewrubin/fpomg/issues"
-  },
-  "homepage": "https://github.com/andrewrubin/fpomg#readme",
   "dependencies": {
-    "canvas": "~2.8.0",
-    "express": "~4.17.1"
+    "@resvg/resvg-wasm": "~2.6.2"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.6.0",
+    "vitest": "~4.1.12",
+    "wrangler": "4.158.0"
   }
 }
