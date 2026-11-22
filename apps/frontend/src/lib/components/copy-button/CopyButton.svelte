@@ -5,20 +5,22 @@
 	export let iconOnly;
 	export let color;
 
-	const handleClick = async (e) => {
+	const handleClick = async () => {
 		await navigator.clipboard.writeText(text);
 	};
 </script>
 
 <button class="copy-button" {disabled} on:click={handleClick}>
 	<CopyIcon {color} />
-	{#if !iconOnly} Copy URL to clipboard {/if}
+	{#if !iconOnly}
+		Copy URL to clipboard
+	{/if}
 </button>
 
 <style lang="scss">
 	button {
-		--easing: cubic-bezier(.66,.35,.33,1.56);
-		--duration: .4s;
+		--easing: cubic-bezier(0.66, 0.35, 0.33, 1.56);
+		--duration: 0.4s;
 
 		align-items: center;
 		display: flex;
@@ -33,7 +35,7 @@
 		}
 
 		&:active {
-			--duration: .05s;
+			--duration: 0.05s;
 			--easing: linear;
 			--scale: 0.8;
 		}

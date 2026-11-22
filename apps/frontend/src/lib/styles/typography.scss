@@ -1,26 +1,26 @@
-@use "./helpers";
-@use "./breakpoints" as breaks;
+@use './helpers';
+@use './breakpoints' as breaks;
 
 :root {
-  --font-body: 'Open Sans', sans-serif;
-  --font-mono: 'PT Mono', monospace;
-  --font-weight-regular: 400;
-  --font-weight-semibold: 600;
+	--font-body: 'Open Sans', sans-serif;
+	--font-mono: 'PT Mono', monospace;
+	--font-weight-regular: 400;
+	--font-weight-semibold: 600;
 
-  font-size: 100%;
+	font-size: 100%;
 }
 
 body {
-  color: var(--color-text-light);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: var(--font-weight-semibold);
+	color: var(--color-text-light);
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: var(--font-weight-semibold);
 }
 
-pre, 
+pre,
 code {
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-regular);
+	font-family: var(--font-mono);
+	font-weight: var(--font-weight-regular);
 }
 
 p,
@@ -33,48 +33,48 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  line-height: 1;
+	margin: 0;
+	line-height: 1;
 }
 
 .txt-body {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 .txt-body-smaller {
-  font-size: .8rem;
+	font-size: 0.8rem;
 }
 
 .txt-body-larger {
-  font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 .txt-body-jumbo {
-  font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 
 .txt-center {
-  text-align: center;
+	text-align: center;
 }
 
 @media #{breaks.$medium-up} {
-  .txt-body-larger {
-    font-size: 1.375rem;
-  }
-  
-  .txt-body-jumbo {
-    font-size: 1.75rem;
-  }
+	.txt-body-larger {
+		font-size: 1.375rem;
+	}
+
+	.txt-body-jumbo {
+		font-size: 1.75rem;
+	}
 }
 
-@media screen and (min-width: 768px)  {
-  .txt-body-smaller {
-    font-size: 0.9rem;  
-  }
+@media screen and (min-width: 768px) {
+	.txt-body-smaller {
+		font-size: 0.9rem;
+	}
 }
 
 @media #{breaks.$large-up} {
-  .txt-body-smaller {
-    font-size: 1rem;  
-  }
+	.txt-body-smaller {
+		font-size: 1rem;
+	}
 }

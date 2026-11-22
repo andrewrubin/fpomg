@@ -14,7 +14,9 @@
     "build": "npm run build -w=apps/frontend",
     "dev": "npm run build && npm run dev -w=apps/worker",
     "deploy": "npm run build && npm run deploy -w=apps/worker",
-    "test": "npm run build && npm test -w=apps/worker"
+    "test": "npm run build && npm test -w=apps/worker",
+    "lint": "npm run lint --workspaces && prettier --check package.json README.md CLAUDE.md",
+    "format": "npm run format --workspaces && prettier --write package.json README.md CLAUDE.md"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/andrewrubin/fpomg/issues"
   },
-  "homepage": "https://github.com/andrewrubin/fpomg#readme"
+  "homepage": "https://github.com/andrewrubin/fpomg#readme",
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
 }

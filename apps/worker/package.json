@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@cloudflare/vitest-plugin": "1.6.0",
+    "prettier": "3.9.10",
     "vitest": "~4.1.12",
     "wrangler": "4.158.0"
   }

@@ -50,6 +50,7 @@ FPOMG runs on [Cloudflare Workers](https://developers.cloudflare.com/workers/). 
 npm install      # use npm 11+ (`npx npm@11 install`); npm 10 crashes resolving Vitest's peer deps
 npm run dev      # build the site, then run the Worker locally at http://localhost:8787
 npm test         # run the Worker tests inside the Workers runtime
+npm run lint     # check formatting (Prettier) and the frontend (ESLint); `npm run format` fixes formatting
 npm run deploy   # build the site and deploy to Cloudflare (run `npx wrangler login` first)
 ```
 

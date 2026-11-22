@@ -10,7 +10,7 @@
 const getForegroundColor = (bgColorRGB) => {
   if (!Array.isArray(bgColorRGB) || bgColorRGB.some((x) => isNaN(x))) {
     throw new Error(
-      "There was an error calculating the text color based on the background color provided. Please try again."
+      "There was an error calculating the text color based on the background color provided. Please try again.",
     );
   }
 
@@ -18,7 +18,7 @@ const getForegroundColor = (bgColorRGB) => {
     (parseInt(bgColorRGB[0]) * 299 +
       parseInt(bgColorRGB[1]) * 587 +
       parseInt(bgColorRGB[2]) * 114) /
-      1000
+      1000,
   );
 
   return value > 125 ? "#000000" : "#ffffff";

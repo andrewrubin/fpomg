@@ -26,7 +26,8 @@ export const createFontMetrics = (bytes) => {
     tables[tag] = u32(rec + 8);
   }
   for (const tag of ["head", "hhea", "hmtx", "cmap"]) {
-    if (tables[tag] === undefined) throw new Error(`Font is missing the ${tag} table.`);
+    if (tables[tag] === undefined)
+      throw new Error(`Font is missing the ${tag} table.`);
   }
 
   const unitsPerEm = u16(tables.head + 18);
@@ -42,7 +43,8 @@ export const createFontMetrics = (bytes) => {
     const platform = u16(rec);
     const encoding = u16(rec + 2);
     const sub = cmap + u32(rec + 4);
-    const isUnicode = platform === 0 || (platform === 3 && (encoding === 1 || encoding === 10));
+    const isUnicode =
+      platform === 0 || (platform === 3 && (encoding === 1 || encoding === 10));
     if (!isUnicode) continue;
     const format = u16(sub);
     if (format === 12) format12 ??= sub;
