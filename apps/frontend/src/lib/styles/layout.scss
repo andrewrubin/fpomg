@@ -1,64 +1,64 @@
-@use "./breakpoints" as breaks;
-@use "sass:math";
+@use './breakpoints' as breaks;
+@use 'sass:math';
 
 $num-columns: 12;
 
 :root {
-  --base-space: 8px;
-  --content-width: 1440px;
-  --gutter: 16px;
+	--base-space: 8px;
+	--content-width: 1440px;
+	--gutter: 16px;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .wrapper,
 .row {
-  margin: 0 auto;
-  max-width: var(--content-width);
+	margin: 0 auto;
+	max-width: var(--content-width);
 }
 
 .wrapper {
-  padding: 0 var(--gutter);
+	padding: 0 var(--gutter);
 }
 
 .row {
-  padding: 0 calc(var(--gutter) * .5);
+	padding: 0 calc(var(--gutter) * 0.5);
 }
 
 .col {
-  flex: 0 0 auto;
-  padding: 0 calc(var(--gutter) * .5);
+	flex: 0 0 auto;
+	padding: 0 calc(var(--gutter) * 0.5);
 }
 
 @media #{breaks.$medium-up} {
-  :root {
-    --gutter: 24px;
-  }
+	:root {
+		--gutter: 24px;
+	}
 
-  .row {
-    display: flex;
-    justify-content: center;
-  }
+	.row {
+		display: flex;
+		justify-content: center;
+	}
 
-  @for $i from 1 through $num-columns {
-    .col--#{$i} {
-      flex-basis: math.div($i, $num-columns) * 100%;
-    }
-  }
+	@for $i from 1 through $num-columns {
+		.col--#{$i} {
+			flex-basis: math.div($i, $num-columns) * 100%;
+		}
+	}
 }
 
 @media #{breaks.$large-up} {
-  :root {
-    --gutter: 38px;
-  }
+	:root {
+		--gutter: 38px;
+	}
 
-  @for $i from 1 through $num-columns {
-    .col--lrg-#{$i} {
-      flex-basis: math.div($i, $num-columns) * 100%;
-    }
-  }
+	@for $i from 1 through $num-columns {
+		.col--lrg-#{$i} {
+			flex-basis: math.div($i, $num-columns) * 100%;
+		}
+	}
 }

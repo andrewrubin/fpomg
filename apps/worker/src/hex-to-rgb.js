@@ -7,7 +7,7 @@
 const hexToRGB = (hex) => {
   if (typeof hex !== "string" || !/^[0-9a-f]{6}$/i.test(hex)) {
     throw new Error(
-      `Invalid color "#${hex}". Color must be a valid six-digit hex value.`
+      `Invalid color "#${hex}". Color must be a valid six-digit hex value.`,
     );
   }
 

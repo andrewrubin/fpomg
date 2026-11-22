@@ -69,16 +69,21 @@ export const layoutText = (text, w, h, measure) => {
     .map((word) => ({ text: word, width: measure(word, 1) }));
   const maxWidth = w * (1 - 2 * PADDING_X);
   const maxHeight = h * (1 - 2 * PADDING_Y);
-  const blockHeight = (lines, fontSize) => lines.length * fontSize * LINE_HEIGHT;
+  const blockHeight = (lines, fontSize) =>
+    lines.length * fontSize * LINE_HEIGHT;
 
   let fontSize = Math.max(1, Math.round(w * BASE_SCALE));
   const minFontSize = Math.min(fontSize, MIN_FONT_SIZE);
 
   for (;;) {
     const lines = wrap(words, maxWidth, fontSize, measure, false);
-    if (lines && blockHeight(lines, fontSize) <= maxHeight) return { fontSize, lines };
+    if (lines && blockHeight(lines, fontSize) <= maxHeight)
+      return { fontSize, lines };
     if (fontSize <= minFontSize) break;
-    fontSize = Math.max(minFontSize, Math.min(fontSize - 1, Math.floor(fontSize * 0.9)));
+    fontSize = Math.max(
+      minFontSize,
+      Math.min(fontSize - 1, Math.floor(fontSize * 0.9)),
+    );
   }
 
   // Doesn't fit even at the minimum size: break long words. The result may still

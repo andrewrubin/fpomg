@@ -1,8 +1,8 @@
-@import "$lib/styles/colors.scss";
-@import "$lib/styles/layout.scss";
-@import "$lib/styles/resets.scss";
-@import "$lib/styles/typography.scss";
-@import "$lib/styles/utilities.scss";
+@use '$lib/styles/colors.scss';
+@use '$lib/styles/layout.scss';
+@use '$lib/styles/resets.scss';
+@use '$lib/styles/typography.scss';
+@use '$lib/styles/utilities.scss';
 
 body {
 	background-color: var(--color-dark-100);

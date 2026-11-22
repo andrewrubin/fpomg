@@ -7,7 +7,7 @@
 	let imageError = false;
 
 	let inputTimer = null;
-	const handleInput = (e) => {
+	const handleInput = () => {
 		if (inputTimer) clearTimeout(inputTimer);
 		inputTimer = setTimeout(() => {
 			if (inputValue.indexOf('fpomg.com') < 0) return;
@@ -50,7 +50,7 @@
 
 <style lang="scss">
 	@use '../../styles/helpers' as *;
-	@use "../../styles/breakpoints" as *;
+	@use '../../styles/breakpoints' as *;
 
 	.demo {
 		--corners: 16px;
@@ -66,12 +66,11 @@
 	.row {
 		> * + * {
 			margin-top: var(--gutter);
-			
+
 			@media #{$medium-up} {
 				margin-top: 0;
 			}
 		}
-
 	}
 
 	.playground {

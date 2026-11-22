@@ -2,7 +2,9 @@
 	import { afterNavigate } from '$app/navigation';
 
 	afterNavigate(() => {
-		PayPal.Donation.Button({
+		// The PayPal SDK is loaded by a <script> in app.html and may be missing
+		// (e.g. blocked by a content blocker), so skip the button if it isn't there.
+		window.PayPal?.Donation.Button({
 			env: 'production',
 			hosted_button_id: 'ECMDZR6C7KKYW',
 			image: {

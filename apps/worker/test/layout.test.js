@@ -3,7 +3,12 @@ import resvgWasm from "@resvg/resvg-wasm/index_bg.wasm";
 import fontData from "../src/fonts/Montserrat-Bold.ttf";
 import { beforeAll, describe, expect, it } from "vitest";
 import { createFontMetrics } from "../src/font-metrics.js";
-import { layoutText, LINE_HEIGHT, PADDING_X, PADDING_Y } from "../src/layout-text.js";
+import {
+  layoutText,
+  LINE_HEIGHT,
+  PADDING_X,
+  PADDING_Y,
+} from "../src/layout-text.js";
 
 const font = new Uint8Array(fontData);
 const { measure, hasGlyph } = createFontMetrics(font);
@@ -14,18 +19,22 @@ describe("font metrics", () => {
   // Compare against resvg's own layout of the same text. Ignoring kerning
   // overestimates for these samples (kerning tightens pairs like "AV"), so
   // wrapping is a little early rather than overflowing into the padding.
-  it.each(["600 x 400", "coming soon", "The quick brown fox jumps over the lazy dog", "WAVY AVATAR"])(
-    "measures %j at or slightly above the rendered width",
-    (text) => {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="4000" height="200"><text x="0" y="100" font-family="Montserrat" font-weight="700" font-size="100">${text}</text></svg>`;
-      const resvg = new Resvg(svg, { font: { fontBuffers: [font], loadSystemFonts: false } });
-      const rendered = resvg.getBBox().width;
-      resvg.free();
-      const measured = measure(text, 100);
-      expect(measured).toBeGreaterThanOrEqual(rendered);
-      expect((measured - rendered) / rendered).toBeLessThan(0.05);
-    },
-  );
+  it.each([
+    "600 x 400",
+    "coming soon",
+    "The quick brown fox jumps over the lazy dog",
+    "WAVY AVATAR",
+  ])("measures %j at or slightly above the rendered width", (text) => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="4000" height="200"><text x="0" y="100" font-family="Montserrat" font-weight="700" font-size="100">${text}</text></svg>`;
+    const resvg = new Resvg(svg, {
+      font: { fontBuffers: [font], loadSystemFonts: false },
+    });
+    const rendered = resvg.getBBox().width;
+    resvg.free();
+    const measured = measure(text, 100);
+    expect(measured).toBeGreaterThanOrEqual(rendered);
+    expect((measured - rendered) / rendered).toBeLessThan(0.05);
+  });
 
   it("returns zero width for empty text", () => {
     expect(measure("", 50)).toBe(0);
@@ -38,22 +47,32 @@ describe("font metrics", () => {
 
   it("knows which characters the font covers", () => {
     for (const ch of "Aaé€ж ") expect(hasGlyph(ch.codePointAt(0))).toBe(true);
-    for (const ch of ["你", "🎅"]) expect(hasGlyph(ch.codePointAt(0))).toBe(false);
+    for (const ch of ["你", "🎅"])
+      expect(hasGlyph(ch.codePointAt(0))).toBe(false);
   });
 });
 
 describe("layoutText", () => {
   const fitsInside = ({ fontSize, lines }, w, h) => {
-    for (const line of lines) expect(measure(line, fontSize)).toBeLessThanOrEqual(w * (1 - 2 * PADDING_X));
-    expect(lines.length * fontSize * LINE_HEIGHT).toBeLessThanOrEqual(h * (1 - 2 * PADDING_Y));
+    for (const line of lines)
+      expect(measure(line, fontSize)).toBeLessThanOrEqual(
+        w * (1 - 2 * PADDING_X),
+      );
+    expect(lines.length * fontSize * LINE_HEIGHT).toBeLessThanOrEqual(
+      h * (1 - 2 * PADDING_Y),
+    );
   };
 
   it("keeps short text on one line at the width-based size", () => {
-    expect(layoutText("600 x 400", 600, 400, measure)).toEqual({ fontSize: 48, lines: ["600 x 400"] });
+    expect(layoutText("600 x 400", 600, 400, measure)).toEqual({
+      fontSize: 48,
+      lines: ["600 x 400"],
+    });
   });
 
   it("wraps long text onto multiple lines without shrinking when it fits", () => {
-    const text = "this placeholder has a lot of words that cannot fit on one line";
+    const text =
+      "this placeholder has a lot of words that cannot fit on one line";
     const layout = layoutText(text, 600, 400, measure);
     expect(layout.fontSize).toBe(48);
     expect(layout.lines.length).toBeGreaterThan(1);
@@ -85,11 +104,15 @@ describe("layoutText", () => {
   });
 
   it("collapses whitespace and handles empty text", () => {
-    expect(layoutText("  a \n\t b  ", 600, 400, measure).lines).toEqual(["a b"]);
+    expect(layoutText("  a \n\t b  ", 600, 400, measure).lines).toEqual([
+      "a b",
+    ]);
     expect(layoutText("   ", 600, 400, measure).lines).toEqual([]);
   });
 
   it("never drops below 1px on tiny images", () => {
-    expect(layoutText("5 x 5", 5, 5, measure).fontSize).toBeGreaterThanOrEqual(1);
+    expect(layoutText("5 x 5", 5, 5, measure).fontSize).toBeGreaterThanOrEqual(
+      1,
+    );
   });
 });

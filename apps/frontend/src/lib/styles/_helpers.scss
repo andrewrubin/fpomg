@@ -1,9 +1,11 @@
-@use "sass:math";
+@use 'sass:math';
 
 @function space-by($n: 1) {
-  @return calc(var(--base-space) * $n);
+	@return calc(var(--base-space) * $n);
 }
 
 @mixin focus-style {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-black);
+	box-shadow:
+		0 0 0 2px var(--color-white),
+		0 0 0 4px var(--color-black);
 }

@@ -27,19 +27,33 @@ describe("createImage", () => {
   });
 
   it("escapes XML in the text", async () => {
-    const png = await createImage({ width: 200, height: 100, text: '<a & "b">' });
+    const png = await createImage({
+      width: 200,
+      height: 100,
+      text: '<a & "b">',
+    });
     expect(pngSize(png)).toEqual({ width: 200, height: 100 });
   });
 
   it("strips characters that are illegal in XML instead of failing", async () => {
-    const png = await createImage({ width: 200, height: 100, text: "a\u0001b￿\uD800c" });
+    const png = await createImage({
+      width: 200,
+      height: 100,
+      text: "a\u0001b￿\uD800c",
+    });
     expect(pngSize(png)).toEqual({ width: 200, height: 100 });
   });
 
   it("accepts text at the length limit, counting characters not UTF-16 units", async () => {
-    const png = await createImage({ width: 300, height: 300, text: "é".repeat(MAX_TEXT_LENGTH) });
+    const png = await createImage({
+      width: 300,
+      height: 300,
+      text: "é".repeat(MAX_TEXT_LENGTH),
+    });
     expect(pngSize(png)).toEqual({ width: 300, height: 300 });
-    expect(() => normalizeOptions({ text: "🎅".repeat(MAX_TEXT_LENGTH) })).not.toThrow();
+    expect(() =>
+      normalizeOptions({ text: "🎅".repeat(MAX_TEXT_LENGTH) }),
+    ).not.toThrow();
   });
 
   it("renders text made only of characters the font lacks", async () => {
@@ -48,9 +62,16 @@ describe("createImage", () => {
   });
 
   it("renders wrapped text and tiny images", async () => {
-    const long = await createImage({ width: 300, height: 300, text: "a much longer line of text that wraps" });
+    const long = await createImage({
+      width: 300,
+      height: 300,
+      text: "a much longer line of text that wraps",
+    });
     expect(pngSize(long)).toEqual({ width: 300, height: 300 });
-    expect(pngSize(await createImage({ width: 1, height: 1 }))).toEqual({ width: 1, height: 1 });
+    expect(pngSize(await createImage({ width: 1, height: 1 }))).toEqual({
+      width: 1,
+      height: 1,
+    });
   });
 
   it.each([
@@ -58,22 +79,31 @@ describe("createImage", () => {
     [{ width: 100, height: MAX_DIMENSION + 1 }, /Invalid height/],
     [{ width: "1.5", height: 100 }, /Invalid width/],
     [{ width: 100, height: 100, color: "nothex" }, /six-digit hex/],
-    [{ width: 100, height: 100, text: "x".repeat(MAX_TEXT_LENGTH + 1) }, /too long/],
+    [
+      { width: 100, height: 100, text: "x".repeat(MAX_TEXT_LENGTH + 1) },
+      /too long/,
+    ],
   ])("rejects %o", async (options, message) => {
     await expect(createImage(options)).rejects.toThrow(message);
   });
 });
 
 describe("fetch handler", () => {
-  const get = (path, init) => exports.default.fetch(`https://fpomg.test${path}`, init);
+  const get = (path, init) =>
+    exports.default.fetch(`https://fpomg.test${path}`, init);
 
   it("serves images with long-lived cache and CORS headers", async () => {
     const res = await get("/600/400/b4d455?text=hello");
     expect(res.status).toBe(200);
     expect(res.headers.get("Content-Type")).toBe("image/png");
-    expect(res.headers.get("Cache-Control")).toBe("public, max-age=86400, s-maxage=31536000");
+    expect(res.headers.get("Cache-Control")).toBe(
+      "public, max-age=86400, s-maxage=31536000",
+    );
     expect(res.headers.get("Access-Control-Allow-Origin")).toBe("*");
-    expect(pngSize(new Uint8Array(await res.arrayBuffer()))).toEqual({ width: 600, height: 400 });
+    expect(pngSize(new Uint8Array(await res.arrayBuffer()))).toEqual({
+      width: 600,
+      height: 400,
+    });
   });
 
   it("answers HEAD requests without a body and caches the image for later GETs", async () => {
@@ -83,7 +113,9 @@ describe("fetch handler", () => {
     expect((await head.arrayBuffer()).byteLength).toBe(0);
 
     await new Promise((resolve) => setTimeout(resolve, 50)); // let the cache write finish
-    const cached = await caches.default.match(`https://fpomg.test/321/123/abcdef?v=${RENDER_VERSION}`);
+    const cached = await caches.default.match(
+      `https://fpomg.test/321/123/abcdef?v=${RENDER_VERSION}`,
+    );
     expect(cached?.status).toBe(200);
 
     // A HEAD that hits the cache also returns no body.
@@ -95,7 +127,9 @@ describe("fetch handler", () => {
   it("ignores unknown query params and equivalent spellings in the cache key", async () => {
     await (await get("/0400/300/ABCDEF?text=hi&junk=1")).arrayBuffer();
     await new Promise((resolve) => setTimeout(resolve, 50));
-    const cached = await caches.default.match(`https://fpomg.test/400/300/abcdef?v=${RENDER_VERSION}&text=hi`);
+    const cached = await caches.default.match(
+      `https://fpomg.test/400/300/abcdef?v=${RENDER_VERSION}&text=hi`,
+    );
     expect(cached?.status).toBe(200);
   });
 
